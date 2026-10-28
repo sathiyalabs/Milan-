@@ -275,18 +275,25 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
             ref={confirmationRef}
             role="region"
             aria-label="Demo Registration Confirmation Pass"
-            className="bg-[#17101E] border-2 border-[#A855F7] rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6 text-[#FAF7F5]"
+            className="relative bg-[#17101E] border-2 border-[#A855F7] rounded-3xl p-6 sm:p-9 shadow-[0_0_50px_rgba(168,85,247,0.25)] space-y-6 text-[#FAF7F5] overflow-hidden"
           >
+            {/* Holographic Header Band */}
+            <div className="absolute top-0 inset-x-0 h-2.5 hologram-effect" />
+
+            {/* Ticket Cutout Notches */}
+            <div className="ticket-notch-left hidden sm:block" aria-hidden="true" />
+            <div className="ticket-notch-right hidden sm:block" aria-hidden="true" />
+
             {/* Pass Header Banner */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-dashed border-[#3D2759] gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-dashed border-[#4A3266] gap-4 pt-2">
               <div>
-                <span className="inline-block px-3 py-1 rounded bg-[#F43F5E]/20 border border-[#F43F5E]/40 text-xs font-bold text-[#F43F5E] uppercase tracking-wider mb-2">
+                <span className="inline-block px-3 py-1 rounded-full bg-[#F43F5E]/20 border border-[#F43F5E]/50 text-xs font-bold text-[#F43F5E] uppercase tracking-wider mb-2">
                   DEMO — NOT VALID FOR ENTRY
                 </span>
                 <h3
                   ref={confirmationHeadingRef}
                   tabIndex={-1}
-                  className="text-2xl sm:text-3xl font-black text-[#FAF7F5] font-display focus:outline-none"
+                  className="text-2xl sm:text-3xl font-black text-[#FAF7F5] font-display focus:outline-none tracking-tight"
                 >
                   MILAN ’26 SIMULATED PASS
                 </h3>
@@ -295,9 +302,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 </p>
               </div>
 
-              <div className="text-left sm:text-right font-mono">
-                <span className="text-[11px] text-[#A89CB5] block">Generated Pass ID (UUID)</span>
-                <span className="text-xs sm:text-sm font-bold text-white tracking-wider block break-all font-mono">
+              <div className="text-left sm:text-right font-mono bg-[#140D1C] p-3 rounded-xl border border-[#2D1F3D]">
+                <span className="text-[10px] text-[#A89CB5] block uppercase tracking-wider">Generated Pass ID (UUID)</span>
+                <span className="text-xs sm:text-sm font-bold text-white tracking-wider block break-all font-mono text-[#06B6D4]">
                   {confirmedPass.ticketId}
                 </span>
                 <span className="text-[11px] text-[#84CC16] font-semibold flex items-center gap-1 sm:justify-end mt-1">
@@ -309,63 +316,63 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
 
             {/* Pass Body Information */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-              <div className="space-y-3">
-                <div>
-                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px]">
+              <div className="space-y-4">
+                <div className="bg-[#120A1A] p-4 rounded-xl border border-[#2D1F3D]">
+                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px] font-semibold">
                     Delegate Name
                   </span>
-                  <p className="text-base font-bold text-white">
+                  <p className="text-lg font-black text-white font-display mt-0.5">
                     {confirmedPass.registrationData.fullName}
                   </p>
-                  <p className="text-[#C8BFD4]">
-                    Roll/ID: {confirmedPass.registrationData.registrationNumber}
+                  <p className="text-[#D4B8ED] font-mono text-xs mt-0.5">
+                    ID: {confirmedPass.registrationData.registrationNumber}
                   </p>
                 </div>
 
-                <div>
-                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px]">
+                <div className="bg-[#120A1A] p-4 rounded-xl border border-[#2D1F3D]">
+                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px] font-semibold">
                     Institution
                   </span>
-                  <p className="font-semibold text-white">
+                  <p className="font-semibold text-white mt-0.5">
                     {confirmedPass.registrationData.college}
                   </p>
                 </div>
 
-                <div>
-                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px]">
+                <div className="bg-[#120A1A] p-4 rounded-xl border border-[#2D1F3D]">
+                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px] font-semibold">
                     Simulated Contact
                   </span>
-                  <p className="text-[#C8BFD4]">{confirmedPass.registrationData.email}</p>
+                  <p className="text-[#C8BFD4] mt-0.5">{confirmedPass.registrationData.email}</p>
                   <p className="text-[#C8BFD4]">{confirmedPass.registrationData.phone}</p>
                 </div>
               </div>
 
-              <div className="space-y-3 bg-[#120A1A] p-4 rounded-xl border border-[#2D1F3D]">
+              <div className="space-y-4 bg-[#120A1A] p-5 rounded-2xl border border-[#2D1F3D]">
                 <div>
-                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px]">
+                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px] font-semibold">
                     Registered Competition
                   </span>
-                  <p className="text-sm font-bold text-[#EC4899]">
+                  <p className="text-base font-bold text-[#EC4899] font-display mt-0.5">
                     {confirmedPass.event.title}
                   </p>
-                  <p className="text-[#C8BFD4] text-[11px]">
+                  <p className="text-[#C8BFD4] text-[11px] mt-0.5">
                     Category: {confirmedPass.event.category} · {confirmedPass.event.day}
                   </p>
                 </div>
 
                 {confirmedPass.registrationData.participationType === 'Team' && (
                   <div>
-                    <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px]">
+                    <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px] font-semibold">
                       Team Details
                     </span>
-                    <p className="font-semibold text-white">
+                    <p className="font-semibold text-white mt-0.5">
                       {confirmedPass.registrationData.teamName} ({confirmedPass.registrationData.teamSize} Contingent Members)
                     </p>
                   </div>
                 )}
 
                 <div>
-                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px]">
+                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px] font-semibold">
                     Venue & Scheduled Slot
                   </span>
                   <p className="font-semibold text-white flex items-center gap-1.5 mt-0.5">
@@ -378,16 +385,17 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 </div>
 
                 {/* Demo Payment Status Display */}
-                <div className="pt-2 border-t border-[#2A1C38]">
-                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px]">
+                <div className="pt-3 border-t border-[#2A1C38]">
+                  <span className="text-[#A89CB5] block uppercase tracking-wider text-[10px] font-semibold">
                     Fee & Reference Status
                   </span>
                   {confirmedPass.isPaidEvent ? (
-                    <div className="space-y-0.5 mt-0.5">
-                      <p className="font-semibold text-[#84CC16]">
-                        Demo reference accepted — payment not verified.
+                    <div className="space-y-1 mt-1">
+                      <p className="font-semibold text-[#84CC16] flex items-center gap-1">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>Demo reference accepted — payment not verified.</span>
                       </p>
-                      <p className="font-mono text-[#FAF7F5] text-[11px]">
+                      <p className="font-mono text-[#FAF7F5] text-xs bg-[#1A1124] px-2.5 py-1 rounded border border-[#3C2754] inline-block">
                         Ref: {confirmedPass.demoPaymentReference}
                       </p>
                       <p className="text-[11px] text-[#A89CB5]">
@@ -395,22 +403,28 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                       </p>
                     </div>
                   ) : (
-                    <p className="font-semibold text-[#84CC16] mt-0.5">
-                      Free demo registration.
+                    <p className="font-semibold text-[#84CC16] mt-1 flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>Free demo registration.</span>
                     </p>
                   )}
                 </div>
               </div>
             </div>
 
-            {/* Disclaimer Footer Box */}
+            {/* Disclaimer Footer Box with Animated QR Laser Scanner */}
             <div className="flex flex-col sm:flex-row items-center justify-between p-4 rounded-xl bg-[#120A1A] border border-[#2D1F3D] gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-white rounded-lg p-1 flex items-center justify-center shrink-0">
+              <div className="flex items-center gap-3.5">
+                {/* Laser scanned QR container */}
+                <div className="relative w-14 h-14 bg-white rounded-lg p-1.5 flex items-center justify-center shrink-0 overflow-hidden shadow-md">
                   <QrCode className="w-full h-full text-[#09080D]" aria-hidden="true" />
+                  <div className="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#EC4899] to-transparent animate-laser shadow-[0_0_8px_#EC4899]" />
                 </div>
                 <div className="text-xs space-y-0.5">
-                  <p className="font-bold text-white">Assessment Verification Note</p>
+                  <p className="font-bold text-white flex items-center gap-1.5">
+                    <span>Simulated Entry Pass</span>
+                    <span className="w-2 h-2 rounded-full bg-[#84CC16] animate-pulse" />
+                  </p>
                   <p className="text-[11px] text-[#A89CB5]">
                     This pass is an in-memory prototype artifact. It does not grant festival admission.
                   </p>
@@ -427,7 +441,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <button
                 type="button"
                 onClick={handleRegisterAnother}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-[#3C2754] text-xs font-semibold text-[#FAF7F5] hover:bg-[#251833] transition-colors cursor-pointer flex items-center justify-center gap-1.5 min-h-[44px]"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-[#3C2754] text-xs font-semibold text-[#FAF7F5] hover:bg-[#251833] btn-motion cursor-pointer flex items-center justify-center gap-1.5 min-h-[44px]"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Register Another Delegate</span>
@@ -436,7 +450,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#EC4899] to-[#8B5CF6] text-white text-xs font-bold hover:opacity-95 transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-sm min-h-[44px]"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#EC4899] to-[#8B5CF6] text-white text-xs font-bold hover:opacity-95 btn-motion cursor-pointer flex items-center justify-center gap-1.5 shadow-lg shadow-[#EC4899]/25 min-h-[44px]"
               >
                 <Printer className="w-3.5 h-3.5" />
                 <span>Print / Save Pass (Demo)</span>
