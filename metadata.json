@@ -1,0 +1,8 @@
+{
+  "name": "Milan Cultural Fest — Student Project",
+  "description": "A student-built cultural festival discovery and demo registration interface for Milan at SRMIST, featuring event exploration, accessible modal details, and simulated pass issuance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

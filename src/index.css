@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #09080D;
+    color: #FAF7F5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+}
+
+/* Milan Dark Stage Patterns & Subtle Jali Background */
+.dark-fest-gradient-line {
+  background-image: linear-gradient(90deg, #EC4899 0%, #8B5CF6 35%, #06B6D4 70%, #84CC16 100%);
+  height: 2px;
+}
+
+.jali-pattern-dark {
+  background-image: 
+    radial-gradient(rgba(168, 85, 247, 0.2) 1px, transparent 1px),
+    radial-gradient(rgba(236, 72, 153, 0.15) 1px, #09080D 1px);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+}
+
+/* Accessible focus indicators for dark theme */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #EC4899;
+  outline-offset: 3px;
+}
+
+/* Interactive Button Micro-Motion */
+.btn-motion {
+  transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1), background-color 150ms ease, opacity 150ms ease, box-shadow 150ms ease;
+}
+.btn-motion:hover {
+  transform: translateY(-1px);
+}
+.btn-motion:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Card Hover Micro-Motion */
+.card-motion {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms ease, box-shadow 200ms ease;
+}
+@media (hover: hover) {
+  .card-motion:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -10px rgba(168, 85, 247, 0.15);
+  }
+}
+
+/* Staggered Hero Keyframes */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-1 {
+  animation: heroFadeUp 500ms cubic-bezier(0.16, 1, 0.3, 1) 0ms forwards;
+}
+.animate-hero-2 {
+  animation: heroFadeUp 550ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
+}
+.animate-hero-3 {
+  animation: heroFadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 240ms forwards;
+}
+.animate-hero-4 {
+  animation: heroFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 360ms forwards;
+}
+
+/* Modal Motion */
+@keyframes modalBackdropFade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes modalContentScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-backdrop {
+  animation: modalBackdropFade 200ms ease-out forwards;
+}
+
+.animate-modal-dialog {
+  animation: modalContentScale 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Clean Print Output for Generated Demo Pass */
+@media print {
+  body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  header, footer, nav, #home, #about, #events, #schedule, #faq {
+    display: none !important;
+  }
+  #registration {
+    background-color: #FFFFFF !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .print-clean {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Pre-flight prefers-reduced-motion strict compliance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-motion:hover, .btn-motion:hover, .btn-motion:active {
+    transform: none !important;
+  }
+}
